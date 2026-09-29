@@ -1,0 +1,32 @@
+# Real GPU training image -- NOT built or run in this repo's CI (no GPU in
+# a standard GitHub Actions runner or this repo's dev sandbox). Provided so
+# the training-side dependencies (CUDA, bitsandbytes for QLoRA) are pinned
+# somewhere real, rather than left as a paragraph of prose.
+#
+# Build on a self-hosted GPU runner or a training job platform that
+# provides a GPU, e.g.:
+#   docker build -f Dockerfile.gpu -t conv-llm-finetune:gpu .
+#   docker run --gpus all -v $(pwd)/data:/app/data -v $(pwd)/artifacts:/app/artifacts \
+#     conv-llm-finetune:gpu python src/sft/train_sft.py \
+#       --model-name <a-larger-real-model> --use-qlora
+FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+# CUDA build of torch, matched to the base image's CUDA 12.4 -- swap the
+# index URL if you change the base image's CUDA version.
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cu124 \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir bitsandbytes
+
+COPY scripts ./scripts
+COPY src ./src
+
+# No CMD: this image is meant to be run as `docker run ... python src/sft/train_sft.py ...`
+# (or train_dpo.py / evaluate.py / merge_and_export.py), not as a long-running service --
+# see Dockerfile (serving image) for that.

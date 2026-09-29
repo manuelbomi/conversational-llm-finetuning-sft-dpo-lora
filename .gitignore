@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Training artifacts and data (regenerable via scripts/, large, and adapter
+# checkpoints from a randomly-seeded smoke run aren't meaningful to commit)
+artifacts/
+data/synthetic/
+*.safetensors
+*.bin
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ruff black
+      - run: ruff check .
+      - run: black --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      # CPU wheel first -- see requirements.txt for why torch isn't pinned there.
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -r requirements.txt
+      # Everything in tests/ is fast (dataset/format/metrics unit tests, a
+      # tiny-gpt2 SFT+DPO+merge smoke run, serve-layer tests) -- real-model
+      # quality runs (a real small instruct model, full dataset) are
+      # intentionally not part of this suite; see README "Testing".
+      - run: pytest tests/ -q

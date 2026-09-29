@@ -1,0 +1,10 @@
+services:
+  serve:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      BASE_MODEL_NAME: sshleifer/tiny-gpt2 # swap for a real model once you've trained a real adapter, see README
+      DEFAULT_ADAPTER_DIR: /app/artifacts/dpo-adapter
+    volumes:
+      - ./artifacts:/app/artifacts:ro # mount a trained adapter directory in from the host

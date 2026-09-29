@@ -1,0 +1,22 @@
+# CPU wheels: install torch first from the CPU index, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# then the rest of this file. See README.md "Setup" for the full sequence
+# and why torch is not listed with a version pin here (CPU vs CUDA wheels
+# come from different index URLs, which pip can't express in one line).
+transformers>=4.44
+peft>=0.12
+trl>=0.9
+datasets>=2.20
+accelerate>=0.33
+numpy>=1.26
+fastapi>=0.115
+uvicorn[standard]>=0.32
+pydantic>=2.9
+pydantic-settings>=2.5
+httpx>=0.27
+
+# dev / test
+pytest>=8.3
+pytest-asyncio>=0.24
+ruff>=0.6
+black>=24.10
