@@ -17,11 +17,11 @@ available.
 
 See real GPU examples from same Author here:
 
-** https://github.com/manuelbomi/Enterprise-Open-Weight-LLM-Fine-Tuning-GPU-Optimization **
+https://github.com/manuelbomi/Enterprise-Open-Weight-LLM-Fine-Tuning-GPU-Optimization 
 
 and here:
 
-** https://github.com/manuelbomi/EconoLLM-Tracer-Affordable-LLM-Fine-Tuning-for-Enterprise-Traceability-Data **
+https://github.com/manuelbomi/EconoLLM-Tracer-Affordable-LLM-Fine-Tuning-for-Enterprise-Traceability-Data 
 
 ---
 
