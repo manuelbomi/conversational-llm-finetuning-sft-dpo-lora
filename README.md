@@ -136,9 +136,7 @@ curl -X POST localhost:8080/classify -H 'content-type: application/json' \
 This repo's own tests and the numbers below all default to
 `sshleifer/tiny-gpt2` on purpose — it lets anyone clone this repo and watch
 the *entire* SFT → DPO → eval → merge pipeline run for real, on CPU, in
-minutes, with no GPU and no multi-gigabyte download. Every number below was
-actually produced by running these scripts in this repo's own CI/dev
-environment (see each command shown) — none are invented.
+minutes, with no GPU and no multi-gigabyte download. 
 
 Interested readres can see real GPU examples from same Author here:
 
@@ -147,6 +145,14 @@ https://github.com/manuelbomi/Enterprise-Open-Weight-LLM-Fine-Tuning-GPU-Optimiz
 and here:
 
 https://github.com/manuelbomi/EconoLLM-Tracer-Affordable-LLM-Fine-Tuning-for-Enterprise-Traceability-Data 
+
+
+
+Every number below was
+actually produced by running these scripts in this repo's own CI/dev
+environment (see each command shown) — none are invented.
+
+
 
 **tiny-gpt2 (pipeline-correctness run, not a quality result):**
 
