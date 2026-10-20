@@ -15,6 +15,16 @@ Train with LoRA by default (`src/sft/train_sft.py --lora-r 8 --lora-alpha
 16`), with a `--use-qlora` flag for 4-bit base weights when a real GPU is
 available.
 
+See real GPU examples from same Author here:
+
+** https://github.com/manuelbomi/Enterprise-Open-Weight-LLM-Fine-Tuning-GPU-Optimization **
+
+and here:
+
+** https://github.com/manuelbomi/EconoLLM-Tracer-Affordable-LLM-Fine-Tuning-for-Enterprise-Traceability-Data **
+
+---
+
 ## Rationale
 - **Memory.** Full fine-tuning needs optimizer state (Adam: 2 extra copies of
   every trainable parameter) sized to the *whole* model. LoRA's trainable
