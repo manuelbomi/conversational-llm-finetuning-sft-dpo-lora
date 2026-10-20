@@ -140,6 +140,14 @@ minutes, with no GPU and no multi-gigabyte download. Every number below was
 actually produced by running these scripts in this repo's own CI/dev
 environment (see each command shown) — none are invented.
 
+Interested readres can see real GPU examples from same Author here:
+
+https://github.com/manuelbomi/Enterprise-Open-Weight-LLM-Fine-Tuning-GPU-Optimization 
+
+and here:
+
+https://github.com/manuelbomi/EconoLLM-Tracer-Affordable-LLM-Fine-Tuning-for-Enterprise-Traceability-Data 
+
 **tiny-gpt2 (pipeline-correctness run, not a quality result):**
 
 ```
